@@ -10,9 +10,9 @@ class HomeController extends Controller {
      */
     public function home(){
 
-        $hello = 'Helo';
+        $hello = 'Hello';
         return $this->render('home.html.twig',[
-            'helo' => $hello
+            'hello' => $hello
         ]) ;
     }
 }
