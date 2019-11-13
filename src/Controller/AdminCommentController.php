@@ -46,7 +46,7 @@ class AdminCommentController extends AbstractController
 
         $form->handleRequest($request);
 
-        //Vérification champs formulaire
+        // Vérification champs formulaire
         if($form->isSubmitted() && $form->isValid()){
             $manager->persist($comment);
             $manager->flush();
@@ -74,7 +74,6 @@ class AdminCommentController extends AbstractController
      * @return Response
      */
     public function delete(Comment $comment, ObjectManager $manager){
-
         $manager->remove($comment);
         $manager->flush();
 

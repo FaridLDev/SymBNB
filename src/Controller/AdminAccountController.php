@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class AdminAccountController extends AbstractController
@@ -23,7 +23,7 @@ class AdminAccountController extends AbstractController
     }
 
     /**
-     *Permet de se déconnecter
+     * Permet de se déconnecter
      *
      * @Route("/admin/logout", name="admin_account_logout")
      *

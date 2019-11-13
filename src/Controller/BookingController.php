@@ -7,11 +7,11 @@ use App\Entity\Booking;
 use App\Entity\Comment;
 use App\Form\BookingType;
 use App\Form\CommentType;
-use Doctrine\Common\Persistence\ObjectManager;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class BookingController extends AbstractController
 {
@@ -32,7 +32,7 @@ class BookingController extends AbstractController
             $booking->setBooker($user)
                     ->setAd($ad);
 
-            //Si les dates ne sont pas disponibles, messages d'erreur
+            // Si les dates ne sont pas disponibles, messages d'erreur
 
             if(!$booking->isBookableDates()){
                 $this->addFlash(

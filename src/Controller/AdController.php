@@ -5,12 +5,12 @@ namespace App\Controller;
 use App\Entity\Ad;
 use App\Form\AdType;
 use App\Repository\AdRepository;
-use Doctrine\Common\Persistence\ObjectManager;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class AdController extends AbstractController
 {
@@ -38,19 +38,20 @@ class AdController extends AbstractController
 
         $form = $this->createForm(AdType::class, $ad);
 
-        //$request pour récupérer données formulaire
-        //handleRequest pour parcourire les données dans $request
+        // $request pour récupérer données formulaire
+        // handleRequest pour parcourire les données dans $request
         $form->handleRequest($request);
 
-        //Vérification champs formulaire
+        // Vérification champs formulaire
         if($form->isSubmitted() && $form->isValid()){
             foreach($ad->getImages() as $image){
                 $image->setAd($ad);
                 $manager->persist($image);
             }
-            //L'auteur de cette annnce c'est l'utilisateur qui est connecté
+
+            // L'auteur de cette annnce c'est l'utilisateur qui est connecté
             $ad->setAuthor($this->getUser());
-            //Enregistrement dans le DB en utilisant injection de dépendances
+            // Enregistrement dans le DB en utilisant injection de dépendances
             $manager->persist($ad);
             $manager->flush();
 
@@ -74,24 +75,24 @@ class AdController extends AbstractController
      * Modiication d'annonces
      *
      * @Route("/ads/{slug}/edit", name="ads_edit")
-     * @Security("is_granted('ROLE_USER') and user === ad.getAuthor()", message="Cette anonce ne vous appartient pa, vous ne pouvez pas la modifier");
+     * @Security("is_granted('ROLE_USER') and user === ad.getAuthor()", message="Cette anonce ne vous appartient pas, vous ne pouvez pas la modifier");
      *
      * @return Response
      */
     public function edit(Ad $ad, Request $request, ObjectManager $manager){
         $form = $this->createForm(AdType::class, $ad);
 
-        //$request pour récupérer données formulaire
-        //handleRequest pour parcourire les données dans $request
+        // $request pour récupérer données formulaire
+        // handleRequest pour parcourire les données dans $request
         $form->handleRequest($request);
 
-        //Vérification champs formulaire
+        // Vérification champs formulaire
         if($form->isSubmitted() && $form->isValid()){
             foreach($ad->getImages() as $image){
                 $image->setAd($ad);
                 $manager->persist($image);
             }
-            //Enregistrement dans le DB en utilisant injection de dépendances
+            // Enregistrement dans le DB en utilisant injection de dépendances
             $manager->persist($ad);
             $manager->flush();
 

@@ -33,7 +33,7 @@ class AppFixtures extends Fixture
                   ->setLastName('Lutaliyev')
                   ->setEmail('l-farid@hotmail.fr')
                   ->setHash($this->encoder->encodePassword($adminUser, 'password'))
-                  ->setPicture('https://twitter.com/ComparaTech')
+                  ->setPicture('https://avatars.io/twitter/ComparaTech')
                   ->setIntroduction($faker->sentence())
                   ->setDescription('<p>'.join('</p><p>',$faker->paragraphs(5)).'</p>')
                   ->addUserRole($adminRole);

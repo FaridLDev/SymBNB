@@ -2,20 +2,21 @@
 
 namespace App\Controller;
 
-use App\Entity\PasswordUpdate;
 use App\Entity\User;
 use App\Form\AccountType;
-use App\Form\PasswordUpdateType;
 use App\Form\RegistrationType;
-use Doctrine\Common\Persistence\ObjectManager;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\PasswordUpdate;
+use App\Form\PasswordUpdateType;
 use Symfony\Component\Form\FormError;
+use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+
 
 class AccountController extends AbstractController
 {
@@ -156,7 +157,7 @@ class AccountController extends AbstractController
     }
 
     /**
-     *Permet d'afficher le profile de l'utilisateur connecté
+     * Permet d'afficher le profile de l'utilisateur connecté
      *
      * @Route("/account", name="account_index")
      * @IsGranted("ROLE_USER")
